@@ -1,7 +1,9 @@
+import React from 'react'
+import AppRouter from './routers/AppRouter'
 
 function App() {
   return (
-    <h1>Hello world! Welcome to our Clean Air app</h1>
+    <AppRouter />
   )
 }
 
