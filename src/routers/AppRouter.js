@@ -1,12 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
 import About from'../@modules/about/About'
 import Dashboard from '../@modules/dashboard//Dashboard'
 import Region from '../@modules/region/Region'
 import Resources from '../@modules/resources/Resources'
+import CurrentLocationContext from '../context/CurrentLocation'
 
 const AppRouter = () => {
+  const [currentLocation, setCurrentLocation] = useState('')
   return (
+    <CurrentLocationContext.Provider value={{currentLocation, setCurrentLocation}} >
     <Router>
       <div>
         <nav>
@@ -41,6 +44,7 @@ const AppRouter = () => {
         </Switch >
       </div>
     </Router>
+    </ CurrentLocationContext.Provider >
   )
 }
 export { AppRouter as default }
