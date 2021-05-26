@@ -103,15 +103,11 @@
     width: 0;
   }
 
-  /* modify after importing fontawesome */
   .navIcon {
-    display: block;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    transition: translate(-100%, 60%);
-    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    font-size: 1.6rem;
     cursor: pointer;
-    color: inherit;
   }
 }

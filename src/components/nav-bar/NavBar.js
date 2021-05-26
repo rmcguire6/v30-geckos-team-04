@@ -68,11 +68,7 @@ const NavBar = props => {
             </li>
           </ul>
           <div className={styles.navIcon} onClick={handleClick}>
-            {click ? (
-              <i className="fas fa-times">X</i>
-            ) : (
-              <i className="fas fa-bars">burger</i>
-            )}
+            <i className={click ? 'fas fa-times' : 'fas fa-bars'}></i>
           </div>
         </div>
       </nav>
