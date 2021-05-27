@@ -1,10 +1,9 @@
-import React from 'react'
-import AppRouter from './routers/AppRouter'
+import React from 'react';
+import AppRouter from './routers/AppRouter';
+import styles from './App.module.css';
 
 function App() {
-  return (
-    <AppRouter />
-  )
+  return <AppRouter />;
 }
 
 export default App;
