@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faSearch} from "@fortawesome/free-solid-svg-icons"
+import styles from './SearchBar.module.css'
 import CurrentLocationContext from '../../context/CurrentLocation'
 const SearchBar = () => {
   const [searchText, setSearchText] = useState('')
@@ -14,11 +15,12 @@ const SearchBar = () => {
 return (
     <div>
         <form onSubmit={setLocation}>
-          <input
+          <input className={styles.SearchBar}
            value={searchText}
+           placeholder='Search'
            onChange={(e) => setSearchText(e.target.value.trim())}
           />
-           <button><FontAwesomeIcon icon={faSearch} /></button>
+           <button className={styles.icon}><FontAwesomeIcon icon={faSearch} /></button>
         </form>
     </div>
   );
