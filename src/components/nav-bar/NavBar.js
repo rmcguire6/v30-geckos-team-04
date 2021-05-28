@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
 import styles from './NavBar.module.css';
 
 const NavBar = props => {
@@ -68,7 +70,7 @@ const NavBar = props => {
             </li>
           </ul>
           <div className={styles.navIcon} onClick={handleClick}>
-            <i className={click ? 'fas fa-times' : 'fas fa-bars'}></i>
+            <FontAwesomeIcon icon={click ? faTimes : faBars} />
           </div>
         </div>
       </nav>
