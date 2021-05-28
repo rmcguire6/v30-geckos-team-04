@@ -1,12 +1,12 @@
 import React from 'react-dom';
-import SearchBar from '../search/SearchBar'
+import SearchBar from '../search/SearchBar';
+import WorldMap from '../world-map/WorldMap';
 
 const Home = () => {
   return (
     <div>
-      <h1>Clean the Air</h1>
-      <h2>Home</h2>
       <SearchBar />
+      <WorldMap />
     </div>
   );
 };
