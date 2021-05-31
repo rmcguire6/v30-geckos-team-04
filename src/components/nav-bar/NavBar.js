@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
 import styles from './NavBar.module.css';
 
-const NavBar = props => {
+const NavBar = () => {
   const [click, setClick] = useState(false);
 
   const handleClick = () => {
@@ -13,7 +15,15 @@ const NavBar = props => {
     <>
       <nav className={styles.navBar}>
         <div className={styles.navContainer}>
-          <NavLink exact to="/" className={styles.navLogo}>
+          <NavLink
+            exact
+            to="/"
+            onClick={() => {
+              setClick(false);
+            }}
+            className={styles.navLogo}
+            aria-laebl="Go home"
+          >
             Clean the Air
           </NavLink>
 
@@ -68,7 +78,7 @@ const NavBar = props => {
             </li>
           </ul>
           <div className={styles.navIcon} onClick={handleClick}>
-            <i className={click ? 'fas fa-times' : 'fas fa-bars'}></i>
+            <FontAwesomeIcon icon={click ? faTimes : faBars} />
           </div>
         </div>
       </nav>

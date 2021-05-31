@@ -1,0 +1,15 @@
+@value mediaQuery from '../../common/size.css';
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 0;
+}
+
+/* Desktop */
+@media screen and (min-width: mediaQuery) {
+  .home {
+    padding: 2rem 0;
+  }
+}

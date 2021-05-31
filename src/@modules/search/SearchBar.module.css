@@ -1,11 +1,52 @@
-@value airBlack, airWhite from '../../common/colors.css';
-.searchBar {
-    margin: .2rem;
-    padding: .2rem;
-    width: 50%;
+@value airBlack, airWhite,airGrey from '../../common/colors.css';
+@value mediaQuery from '../../common/size.css';
+
+.searchForm {
+  display: flex;
+  width: 90%;
+  height: 2rem;
+  margin-bottom: 1.5rem;
 }
+
+.searchForm > * {
+  border: 1px solid airBlack;
+  border-radius: 2px;
+}
+
+.searchBar {
+  flex: 4;
+  margin-right: 0.2rem;
+  padding: 0.2rem;
+  font-size: 1.2rem;
+}
+
 .icon {
-    background-color: airBlack;
-    color: airWhite;
-    padding: .2rem;
+  flex: 1;
+  padding: 0.2rem;
+  color: airWhite;
+  background-color: airBlack;
+  cursor: pointer;
+  transition: opacity 250ms;
+}
+
+.icon:hover {
+  opacity: 0.8;
+}
+
+/* Desktop */
+@media screen and (min-width: mediaQuery) {
+  .searchForm {
+    width: 30%;
+    max-width: 50rem;
+    margin-bottom: 2rem;
+  }
+
+  .searchBar {
+    flex: 8;
+    font-size: 1rem;
+  }
+
+  .icon {
+    flex: 1;
+  }
 }
