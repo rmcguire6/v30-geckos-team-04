@@ -1,5 +1,5 @@
 @value airBlack, airWhite from '../../common/colors.css';
-.SearchBar {
+.searchBar {
     margin: .2rem;
     padding: .2rem;
     width: 50%;

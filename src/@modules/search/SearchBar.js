@@ -15,7 +15,7 @@ const SearchBar = () => {
 return (
     <div>
         <form onSubmit={setLocation}>
-          <input className={styles.SearchBar}
+          <input className={styles.searchBar}
            value={searchText}
            placeholder='Search'
            onChange={(e) => setSearchText(e.target.value.trim())}
