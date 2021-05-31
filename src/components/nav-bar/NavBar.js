@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
 import styles from './NavBar.module.css';
 
-const NavBar = props => {
+const NavBar = () => {
   const [click, setClick] = useState(false);
 
   const handleClick = () => {
@@ -15,7 +15,15 @@ const NavBar = props => {
     <>
       <nav className={styles.navBar}>
         <div className={styles.navContainer}>
-          <NavLink exact to="/" className={styles.navLogo}>
+          <NavLink
+            exact
+            to="/"
+            onClick={() => {
+              setClick(false);
+            }}
+            className={styles.navLogo}
+            aria-laebl="Go home"
+          >
             Clean the Air
           </NavLink>
 
