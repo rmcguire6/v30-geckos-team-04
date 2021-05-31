@@ -1,9 +1,9 @@
 @value airBlack, airWhite,airGrey from '../../common/colors.css';
+@value mediaQuery from '../../common/size.css';
 
 .searchForm {
   display: flex;
-  width: 50%;
-  max-width: 50rem;
+  width: 90%;
   height: 2rem;
   margin-bottom: 1.5rem;
 }
@@ -36,8 +36,9 @@
 /* Desktop */
 @media screen and (min-width: mediaQuery) {
   .searchForm {
-    margin-bottom: 2rem;
     width: 30%;
+    max-width: 50rem;
+    margin-bottom: 2rem;
   }
 
   .searchBar {
