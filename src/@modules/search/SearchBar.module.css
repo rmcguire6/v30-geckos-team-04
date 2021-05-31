@@ -1,0 +1,11 @@
+@value airBlack, airWhite from '../../common/colors.css';
+.searchBar {
+    margin: .2rem;
+    padding: .2rem;
+    width: 50%;
+}
+.icon {
+    background-color: airBlack;
+    color: airWhite;
+    padding: .2rem;
+}
