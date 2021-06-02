@@ -23,15 +23,16 @@ const WorldMap = ({ setTooltipContent }) => {
 
   return (
     <ComposableMap
-      data-tip=""
+      projectionConfig={{
+        scale: windowWidth > 1024 ? 40 : 120,
+        center: [0, 8],
+      }}
       width={200}
       height={100}
       style={{ width: '100%', height: '70vh' }}
-      projectionConfig={{
-        scale: windowWidth > 1024 ? 40 : 120,
-      }}
+      data-tip=""
     >
-      <ZoomableGroup center={[0, 6]}>
+      <ZoomableGroup>
         <Geographies geography={geoUrl}>
           {({ geographies }) =>
             geographies.map(geo => (
