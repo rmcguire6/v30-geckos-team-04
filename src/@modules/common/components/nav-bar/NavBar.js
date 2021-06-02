@@ -22,7 +22,7 @@ const NavBar = () => {
               setClick(false);
             }}
             className={styles.navLogo}
-            aria-laebl="Go home"
+            aria-label="Go home"
           >
             Clean the Air
           </NavLink>

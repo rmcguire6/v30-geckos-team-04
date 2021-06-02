@@ -1,4 +1,4 @@
-@value mediaQuery from '../../common/size.css';
+@value mediaQuery from '../common/size.css';
 
 .home {
   display: flex;

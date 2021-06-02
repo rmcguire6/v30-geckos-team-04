@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
-@value airBlack from './common/colors.css';
-@value mediaQuery from './common/size.css';
+@value airBlack from '@modules/common/colors.css';
+@value mediaQuery from '@modules/common/size.css';
 
 /* Reset CSS */
 * {

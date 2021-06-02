@@ -1,5 +1,5 @@
-@value airBlack, airWhite from '../../common/colors.css';
-@value mediaQuery from '../../common/size.css';
+@value airBlack, airWhite from '../../colors.css';
+@value mediaQuery from '../../size.css';
 
 .navBar {
   display: flex;
