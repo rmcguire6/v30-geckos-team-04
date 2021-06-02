@@ -6,7 +6,7 @@ import About from '../@modules/about/About';
 import Home from '../@modules/home/Home';
 import Region from '../@modules/region/Region';
 import Resources from '../@modules/resources/Resources';
-import NavBar from '../components/nav-bar/NavBar';
+import NavBar from '../@modules/common/components/nav-bar/NavBar';
 import CurrentLocationContext from '../context/CurrentLocation';
 
 const AppRouter = () => {
