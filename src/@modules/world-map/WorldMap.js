@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import {
   ZoomableGroup,
   ComposableMap,
@@ -10,14 +10,28 @@ const geoUrl =
   'https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json';
 
 const WorldMap = ({ setTooltipContent }) => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  //Handle resize
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <ComposableMap
       data-tip=""
-      width={400}
-      height={150}
-      projectionConfig={{ scale: 70 }}
+      width={200}
+      height={100}
+      style={{ width: '100%', height: '70vh' }}
+      projectionConfig={{
+        scale: window.innerWidth > 1024 ? 40 : 120,
+      }}
     >
-      <ZoomableGroup center={[0, 10]}>
+      <ZoomableGroup center={[0, 6]}>
         <Geographies geography={geoUrl}>
           {({ geographies }) =>
             geographies.map(geo => (
