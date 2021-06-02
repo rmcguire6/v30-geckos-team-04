@@ -28,7 +28,7 @@ const WorldMap = ({ setTooltipContent }) => {
       height={100}
       style={{ width: '100%', height: '70vh' }}
       projectionConfig={{
-        scale: window.innerWidth > 1024 ? 40 : 120,
+        scale: windowWidth > 1024 ? 40 : 120,
       }}
     >
       <ZoomableGroup center={[0, 6]}>
