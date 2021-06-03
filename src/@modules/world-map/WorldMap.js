@@ -5,6 +5,7 @@ import {
   Geographies,
   Geography,
 } from 'react-simple-maps';
+import styles from './WorldMap.module.css';
 
 const geoUrl =
   'https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json';
@@ -29,8 +30,8 @@ const WorldMap = ({ setTooltipContent }) => {
       }}
       width={200}
       height={100}
-      style={{ width: '100%', height: '70vh' }}
       data-tip=""
+      className={styles.worldMap}
     >
       <ZoomableGroup>
         <Geographies geography={geoUrl}>
