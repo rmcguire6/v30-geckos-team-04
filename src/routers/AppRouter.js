@@ -8,15 +8,17 @@ import Region from '../@modules/region/Region';
 import Resources from '../@modules/resources/Resources';
 import NavBar from '../@modules/common/components/nav-bar/NavBar';
 import CurrentContext from '../context/Current';
+import useGetCountries from '../hooks/useGetCountries'
 
 const AppRouter = () => {
+  const [{countries}] = useGetCountries()
   const [currentLocation, setCurrentLocation] = useState('');
   return (
       <Router>
         <NavBar />
         <Switch>
         <CurrentContext.Provider
-          value={{ currentLocation, setCurrentLocation }}
+          value={{ currentLocation, setCurrentLocation, countries }}
         >
           <Route exact path="/">
             <Home />
