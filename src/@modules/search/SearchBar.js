@@ -2,11 +2,11 @@ import React, { useState, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import styles from './SearchBar.module.css';
-import CurrentLocationContext from '../../context/CurrentLocation';
+import CurrentContext from '../../context/Current';
 
 const SearchBar = () => {
   const [searchText, setSearchText] = useState('');
-  const { setCurrentLocation } = useContext(CurrentLocationContext);
+  const { setCurrentLocation } = useContext(CurrentContext);
   const setLocation = e => {
     e.preventDefault();
     setCurrentLocation({ location: searchText });
