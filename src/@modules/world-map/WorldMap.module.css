@@ -7,7 +7,7 @@
 }
 
 /* Desktop */
-@media screen and (min-width: mediaQuery) {
+@media screen and (min-width: (mediaQuery)) {
   .worldMap {
     margin-bottom: 2rem;
   }
