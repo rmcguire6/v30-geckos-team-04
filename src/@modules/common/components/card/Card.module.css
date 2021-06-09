@@ -1,0 +1,14 @@
+.card {
+  background-color: hsl(120, 100%, 35%);
+  border: 2px solid black;
+  padding: 1rem;
+}
+.item {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+.label {
+  font-weight: bold;
+  padding-right: 1rem;
+}

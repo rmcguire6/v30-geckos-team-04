@@ -23,7 +23,7 @@
 
 .navLogo {
   padding: 1.5rem;
-  font-family: 'Comfortaa', cursive;
+  font-family: "Comfortaa", cursive;
   font-weight: 700;
   font-size: 1.2rem;
 }
@@ -94,7 +94,7 @@
   }
 
   .navItem::after {
-    content: '';
+    content: "";
     display: block;
     height: 1.6px;
     width: 0;
