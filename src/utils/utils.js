@@ -1,5 +1,4 @@
 export const calculateAirQuality = pollutant => {
-  console.log(pollutant);
   let quality = '';
   if (0 <= pollutant && pollutant <= 50) {
     quality = 'Good';
