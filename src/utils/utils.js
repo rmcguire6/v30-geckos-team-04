@@ -15,6 +15,5 @@ export const calculateAirQuality = pollutant => {
   } else {
     quality = 'Unknown';
   }
-  console.log(quality);
   return quality;
 };
