@@ -8,12 +8,14 @@ import Card from "../common/components/card/Card";
 const Region = () => {
   const { currentLocation } = useContext(CurrentContext);
   const [data, setData] = useState([]);
-  const url = `https://docs.openaq.org/v2/latest?limit=100&page=1&offset=0&sort=desc&coordinates=33.7864%2C-111.9195&radius=100&order_by=lastUpdated&dumpRaw=false`;
+  const [latAndLong] = useState([40.6673, -111.7996]);
 
   useEffect(() => {
     const fetchMeasurements = async () => {
       try {
-        const result = await axios.get(url);
+        const result = await axios.get(
+          `https://docs.openaq.org/v2/latest?limit=100&page=1&offset=0&sort=desc&coordinates=${latAndLong[0]}%2C${latAndLong[1]}&radius=100&order_by=lastUpdated&dumpRaw=false`
+        );
         setData(result.data.results);
       } catch (error) {
         console.error(error);
@@ -21,7 +23,7 @@ const Region = () => {
     };
     fetchMeasurements();
     console.log("fetch happened");
-  }, [url]);
+  }, [latAndLong]);
   console.log("data", data);
   console.log("current Location ", currentLocation);
 

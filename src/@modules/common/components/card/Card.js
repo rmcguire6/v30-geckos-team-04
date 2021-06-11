@@ -8,7 +8,7 @@ const Card = ({ location, country, measurements }) => {
   );
   useEffect(() => {
     setAirQuality(calculateAirQuality(currentPM.value));
-  }, []);
+  }, [currentPM]);
   return (
     <div className={styles.card}>
       <h3>{`${location} in ${country}`}</h3>
