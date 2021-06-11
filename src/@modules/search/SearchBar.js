@@ -19,7 +19,7 @@ const SearchBar = () => {
           className={styles.searchBar}
           value={searchText}
           placeholder="Search"
-          onChange={(e) => setSearchText(e.target.value.trim())}
+          onChange={(e) => setSearchText(e.target.value)}
         />
         <button className={styles.icon}>
           <FontAwesomeIcon icon={faSearch} />
