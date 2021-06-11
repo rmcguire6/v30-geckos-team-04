@@ -6,6 +6,8 @@ import {
   Geography,
 } from 'react-simple-maps';
 import styles from './WorldMap.module.css';
+// import useGetCountries from '../../hooks/useGetCountries`';
+import { calculateAirQuality } from '../../utils/utils';
 
 const geoUrl =
   'https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json';
@@ -21,6 +23,11 @@ const WorldMap = ({ setTooltipContent }) => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  //Get current average pollutants
+  // useEffect(() => {
+  //   useGetCountries();
+  // }, []);
 
   return (
     <ComposableMap
@@ -42,7 +49,7 @@ const WorldMap = ({ setTooltipContent }) => {
                 geography={geo}
                 onMouseEnter={() => {
                   const { NAME } = geo.properties;
-                  setTooltipContent(` ${NAME} : Pop-up box content`);
+                  setTooltipContent(` ${NAME} : ${calculateAirQuality(180)}`);
                 }}
                 onMouseLeave={() => {
                   setTooltipContent('');
