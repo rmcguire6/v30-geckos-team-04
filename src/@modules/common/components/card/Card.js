@@ -1,24 +1,31 @@
 import React, { useEffect, useState } from "react";
 import styles from "../card/Card.module.css";
 import { calculateAirQuality } from "../../../../utils/utils";
-
-const Card = ({ cityName, countryName, parameter, value }) => {
+const Card = ({ location, country, measurements }) => {
   const [airQuality, setAirQuality] = useState(null);
-  console.log(`countryName is ${countryName}`);
+  const currentPM = measurements.find(
+    (element) => element.parameter === "pm25"
+  );
   useEffect(() => {
-    setAirQuality(calculateAirQuality(value));
-  }, [value]);
+    setAirQuality(calculateAirQuality(currentPM.value));
+  }, []);
   return (
     <div className={styles.card}>
-      <h3>{`${cityName}, ${countryName}`}</h3>
-      <div className={styles.item}>
-        <p className={styles.label}>{parameter}</p>
-        <p>{value}</p>
-      </div>
-      <div className={styles.item}>
-        <p className={styles.label}>Air Quality: </p>
-        <p>{airQuality}</p>
-      </div>
+      <h3>{`${location} in ${country}`}</h3>
+      <ul>
+        {measurements.map((item) => {
+          return (
+            <li key={item.parameter} className={styles.item}>
+              <p className={styles.label}>{item.parameter}</p>
+              <p>{item.value}</p>
+            </li>
+          );
+        })}
+        <li className={styles.item}>
+          <p className={styles.label}>Air Quality: </p>
+          <p>{airQuality}</p>
+        </li>
+      </ul>
     </div>
   );
 };
