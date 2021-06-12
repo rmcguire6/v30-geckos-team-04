@@ -25,7 +25,7 @@ const Region = () => {
     console.log("fetch happened");
   }, [latAndLong]);
   console.log("data", data);
-  console.log("current Location ", currentLocation);
+  console.log("current location,  Lat", currentLocation, latAndLong);
 
   return (
     <div className={styles.region}>
@@ -33,7 +33,9 @@ const Region = () => {
       <SearchBar />
       {data.length > 0 ? (
         <>
-          <h2 className={styles.title}>Search Results-{data[0].location}</h2>
+          <h2 className={styles.title}>
+            Search Results--{currentLocation || data[0].location}
+          </h2>
           <Card
             location={data[0].location}
             country={data[0].country}
