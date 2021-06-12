@@ -3,7 +3,7 @@ import axios from "axios";
 import styles from "./Region.module.css";
 import SearchBar from "../search/SearchBar";
 import CurrentContext from "../../context/Current";
-import Card from "../common/components/card/Card";
+import SearchResults from "../common/components/search-results/SearchResults";
 
 const Region = () => {
   const { currentLocation } = useContext(CurrentContext);
@@ -32,18 +32,13 @@ const Region = () => {
       <h1 className={styles.title}>Region</h1>
       <SearchBar />
       {data.length > 0 ? (
-        <>
-          <h2 className={styles.title}>
-            Search Results--{currentLocation || data[0].location}
-          </h2>
-          <Card
-            location={data[0].location}
-            country={data[0].country}
-            measurements={data[0].measurements}
-          />
-        </>
+        <SearchResults
+          location={data[0].location}
+          country={data[0].country}
+          measurements={data[0].measurements}
+        />
       ) : (
-        <></>
+        <h2>No Results Found</h2>
       )}
     </div>
   );
