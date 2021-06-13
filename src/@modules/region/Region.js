@@ -3,42 +3,62 @@ import axios from "axios";
 import styles from "./Region.module.css";
 import SearchBar from "../search/SearchBar";
 import CurrentContext from "../../context/Current";
-import SearchResults from "../common/components/search-results/SearchResults";
 
 const Region = () => {
   const { currentLocation } = useContext(CurrentContext);
   const [data, setData] = useState([]);
-  const [latAndLong] = useState([40.6673, -111.7996]);
+  const [latAndLng, setLatAndLng] = useState();
 
   useEffect(() => {
-    const fetchMeasurements = async () => {
+    const fetchLatAndLong = async () => {
       try {
         const result = await axios.get(
-          `https://docs.openaq.org/v2/latest?limit=100&page=1&offset=0&sort=desc&coordinates=${latAndLong[0]}%2C${latAndLong[1]}&radius=100&order_by=lastUpdated&dumpRaw=false`
+          `http://www.mapquestapi.com/geocoding/v1/address?key=${process.env.REACT_APP_MAPQUEST}&location=${currentLocation}`
         );
-        setData(result.data.results);
+        setData(result.data.results[0].locations[0].displayLatLng);
       } catch (error) {
         console.error(error);
       }
+      return data;
     };
-    fetchMeasurements();
-    console.log("fetch happened");
-  }, [latAndLong]);
-  console.log("data", data);
-  console.log("current location,  Lat", currentLocation, latAndLong);
+    if (currentLocation.length > 0) {
+      fetchLatAndLong();
+    }
+  }, [currentLocation]);
+  console.log("loc data", currentLocation, data);
+  useEffect(() => {
+    setLatAndLng([data.lat, data.lng]);
+    console.log("latLng changed", latAndLng);
+  }, [data.lat, data.lng]);
 
   return (
     <div className={styles.region}>
       <h1 className={styles.title}>Region</h1>
       <SearchBar />
-      {data.length > 0 ? (
-        <SearchResults
-          location={data[0].location}
-          country={data[0].country}
-          measurements={data[0].measurements}
-        />
+      {currentLocation.length > 0 ? (
+        <>
+          <div className={styles.card}>
+            <ul>
+              <li className={styles.item}>
+                <p className={styles.label}>
+                  Location: {currentLocation.toUpperCase()}
+                </p>
+              </li>
+              <li className={styles.item}>
+                <p className={styles.label}>Lat:</p>
+                <p>{data?.lat}</p>
+              </li>
+              <li className={styles.item}>
+                <p className={styles.label}>Long:</p>
+                <p>{data?.lng}</p>
+              </li>
+            </ul>
+          </div>
+        </>
       ) : (
-        <h2>No Results Found</h2>
+        <div className={styles.card}>
+          <p className={styles.label}>No Location Selected</p>
+        </div>
       )}
     </div>
   );
