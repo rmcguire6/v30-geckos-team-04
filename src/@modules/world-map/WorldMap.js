@@ -5,24 +5,34 @@ import {
   Geographies,
   Geography,
 } from 'react-simple-maps';
-import styles from './WorldMap.module.css';
+import { scaleQuantile } from 'd3-scale';
 import { calculateAirQuality } from '../../utils/utils';
+import styles from './WorldMap.module.css';
 
 const geoUrl =
   'https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json';
 
+// from green to red
+const COLOR_RANGE = [
+  '#A5B9A0',
+  '#B2C996',
+  '#D2DB8C',
+  '#EDD482',
+  '#FFB177',
+  '#FF8A87',
+];
+const DEFAULT_COLOR = '#A8A8A8';
+
 const geoStyle = {
   default: {
-    fill: '#D6D6DA',
     outline: 'none',
   },
   hover: {
-    fill: '#F53',
+    fill: '#ccc',
     transition: 'all 250ms',
     outline: 'none',
   },
   pressed: {
-    // fill: '#E42',
     outline: 'none',
   },
 };
@@ -31,7 +41,6 @@ const geoStyle = {
 const WorldMap = ({ setTooltipContent, countries }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  //Handle resize
   useEffect(() => {
     function handleResize() {
       setWindowWidth(window.innerWidth);
@@ -40,10 +49,16 @@ const WorldMap = ({ setTooltipContent, countries }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const colorScale = scaleQuantile().domain([0, 90]).range(COLOR_RANGE);
+
   const onMouseEnter = (geo, current = { average: 'NA' }) => {
     const { NAME } = geo.properties;
     return () => {
-      setTooltipContent(` ${NAME} : ${calculateAirQuality(current.average)}`);
+      setTooltipContent(
+        ` ${NAME} : ${calculateAirQuality(current.average)} (${
+          current.average
+        })`
+      );
     };
   };
 
@@ -69,11 +84,11 @@ const WorldMap = ({ setTooltipContent, countries }) => {
               const current = countries.find(
                 ({ name }) => name === geo.properties.ISO_A2
               );
-              // console.log(current);
               return (
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
+                  fill={current ? colorScale(current.average) : DEFAULT_COLOR}
                   onMouseEnter={onMouseEnter(geo, current)}
                   onMouseLeave={onMouseLeave}
                   style={geoStyle}
