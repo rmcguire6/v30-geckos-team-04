@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Mission from "../@modules/mission/Mission";
-import About from "../@modules/about/About";
-import Home from "../@modules/home/Home";
-import Region from "../@modules/region/Region";
-import Resources from "../@modules/resources/Resources";
-import NavBar from "../@modules/common/components/nav-bar/NavBar";
-import CurrentContext from "../context/Current";
-import useGetCountriesAverages from "../hooks/useGetCountriesAverages";
+import Mission from '../@modules/mission/Mission';
+import About from '../@modules/about/About';
+import Home from '../@modules/home/Home';
+import Region from '../@modules/region/Region';
+import Resources from '../@modules/resources/Resources';
+import NavBar from '../@modules/common/components/nav-bar/NavBar';
+import CurrentContext from '../context/Current';
+import useGetCountriesDailyAverages from '../hooks/useGetCountriesDailyAverages';
 
 const AppRouter = () => {
-  const [{ countries }] = useGetCountriesAverages();
-  const [currentLocation, setCurrentLocation] = useState("");
+  const [{ countries }] = useGetCountriesDailyAverages();
+  const [currentLocation, setCurrentLocation] = useState('');
   return (
     <Router>
       <NavBar />

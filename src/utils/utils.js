@@ -13,7 +13,7 @@ export const calculateAirQuality = pollutant => {
   } else if (301 <= pollutant) {
     quality = 'Hazardous';
   } else {
-    quality = 'Unknown';
+    quality = 'No Data';
   }
   return quality;
 };
