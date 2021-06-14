@@ -1,5 +1,8 @@
 # CLEAN THE AIR
 
+[![](https://user-images.githubusercontent.com/67154580/121839568-56d8fb00-cd15-11eb-8db3-f7801dd9a7c4.png)](https://clean-the-air.herokuapp.com/)
+
+### :cloud: Click the logo above, it will link to the web application 
 
 ## Contents
 - [The App](#the-app)
