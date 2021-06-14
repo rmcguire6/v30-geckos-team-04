@@ -5,7 +5,6 @@ import {
   Geographies,
   Geography,
 } from 'react-simple-maps';
-import { scaleQuantile } from 'd3-scale';
 import { calculateAirQuality } from '../../utils/utils';
 import styles from './WorldMap.module.css';
 
@@ -49,7 +48,24 @@ const WorldMap = ({ setTooltipContent, countries }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const colorScale = scaleQuantile().domain([0, 90]).range(COLOR_RANGE);
+  const colorScale = value => {
+    switch (calculateAirQuality(value)) {
+      case 'Good':
+        return COLOR_RANGE[0];
+      case 'Moderate':
+        return COLOR_RANGE[1];
+      case 'Unhealthy for Sensitive Groups':
+        return COLOR_RANGE[2];
+      case 'Unhealthy':
+        return COLOR_RANGE[3];
+      case 'Very Unhealthy':
+        return COLOR_RANGE[4];
+      case 'Hazardous':
+        return COLOR_RANGE[5];
+      default:
+        return DEFAULT_COLOR;
+    }
+  };
 
   const onMouseEnter = (geo, current = { average: 'NA' }) => {
     const { NAME } = geo.properties;
