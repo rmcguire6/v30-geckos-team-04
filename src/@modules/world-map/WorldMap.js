@@ -48,7 +48,7 @@ const WorldMap = ({ setTooltipContent, countries }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const colorScale = value => {
+  const colorScale = (value) => {
     switch (calculateAirQuality(value)) {
       case 'Good':
         return COLOR_RANGE[0];
@@ -81,7 +81,14 @@ const WorldMap = ({ setTooltipContent, countries }) => {
   const onMouseLeave = () => {
     setTooltipContent('');
   };
-
+  const selectCountry = (geo) => {
+    if (countries.length > 0) {
+      const current = countries.find(
+        ({ name }) => name === geo.properties.ISO_A2
+      );
+      return current;
+    }
+  };
   return (
     <ComposableMap
       projectionConfig={{
@@ -96,10 +103,8 @@ const WorldMap = ({ setTooltipContent, countries }) => {
       <ZoomableGroup>
         <Geographies geography={geoUrl}>
           {({ geographies }) =>
-            geographies.map(geo => {
-              const current = countries.find(
-                ({ name }) => name === geo.properties.ISO_A2
-              );
+            geographies.map((geo) => {
+              const current = selectCountry(geo);
               return (
                 <Geography
                   key={geo.rsmKey}
